@@ -9,18 +9,18 @@ rem ==================
 
 :MENU
 cls
-color 0A
+color 04
 echo ===============================
 echo  AI Detector — Menu principale
 echo ===============================
 echo.
-echo 1) Scarica e avvia versione COMPLETA (con Torch)
-echo 2) Scarica e avvia versione LEGGERA (senza Torch)
-echo 3) Solo aggiorna script da GitHub
-echo 4) Esegui script esistente
+echo 1) Versione completa
+echo 2) Versione leggera
+echo 3) Scarica o Aggiorna script
+echo 4) Esegui script
 echo 5) Esci
 echo.
-set /p choice="Scegli un'opzione (1-5): "
+set /p choice=">> "
 
 if "%choice%"=="1" goto FULL
 if "%choice%"=="2" goto LIGHT
@@ -33,7 +33,7 @@ pause >nul
 goto MENU
 
 :FULL
-color 0B
+color 0A
 echo Scaricamento versione COMPLETA da GitHub...
 powershell -Command "Invoke-WebRequest -Uri '%FULL_URL%' -OutFile 'detector_full.py' -UseBasicParsing"
 if errorlevel 1 (
@@ -57,7 +57,7 @@ pause
 goto MENU
 
 :LIGHT
-color 0B
+color 0A
 echo Scaricamento versione LEGGERA da GitHub...
 powershell -Command "Invoke-WebRequest -Uri '%LIGHT_URL%' -OutFile 'detector_light.py' -UseBasicParsing"
 if errorlevel 1 (
@@ -125,3 +125,4 @@ if exist venv_full rmdir /s /q venv_full
 if exist venv_light rmdir /s /q venv_light
 endlocal
 exit /b 0
+
