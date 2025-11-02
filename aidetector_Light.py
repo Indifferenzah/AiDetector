@@ -229,5 +229,6 @@ def read_multiline_input():
 if __name__ == "__main__":
     text = read_multiline_input()
     # Chiama la funzione di analisi con `text`
-    analyze_text(text)
+    analyze_text(text, use_perplexity=False)
+
 
