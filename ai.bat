@@ -123,9 +123,15 @@ if exist "detector_full.py" del "detector_full.py"
 if exist "detector_light.py" del "detector_light.py"
 if exist "venv_full" rmdir /s /q "venv_full"
 if exist "venv_light" rmdir /s /q "venv_light"
-cd "%USERPROFILE%\Desktop"
-if exist "%USERPROFILE%\Desktop\AiDetector" rmdir /s /q "%USERPROFILE%\Desktop\AiDetector"
+
+rem Spostati sul Desktop prima di cancellare AiDetector
+cd /d "%USERPROFILE%\Desktop" || (
+    echo Impossibile cambiare cartella sul Desktop.
+    goto END_CLEANUP
+)
+
+if exist "AiDetector" rmdir /s /q "AiDetector"
+
+:END_CLEANUP
 endlocal
 exit /b 0
-
-
