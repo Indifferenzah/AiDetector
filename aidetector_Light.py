@@ -215,6 +215,19 @@ def analyze_text(text: str, use_perplexity=True):
     print("- Modifica i pesi o le soglie nel codice per adattarlo al tuo dominio.")
     print("=================\n")
 
+def read_multiline_input():
+    print("Incolla il testo da analizzare. Premi Ctrl+Z + Invio per terminare:")
+    lines = []
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            break
+        lines.append(line)
+    return "\n".join(lines)
+
 if __name__ == "__main__":
-    txt = read_text_from_clipboard_or_stdin()
-    analyze_text(txt, use_perplexity=False)
+    text = read_multiline_input()
+    # Chiama la funzione di analisi con `text`
+    analyze_text(text)
+
