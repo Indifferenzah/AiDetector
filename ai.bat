@@ -123,8 +123,9 @@ if exist "detector_full.py" del "detector_full.py"
 if exist "detector_light.py" del "detector_light.py"
 if exist "venv_full" rmdir /s /q "venv_full"
 if exist "venv_light" rmdir /s /q "venv_light"
-cd ../
+cd "%USERPROFILE%\Desktop"
 if exist "%USERPROFILE%\Desktop\AiDetector" rmdir /s /q "%USERPROFILE%\Desktop\AiDetector"
 endlocal
 exit /b 0
+
 
