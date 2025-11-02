@@ -178,7 +178,7 @@ def analyze_text(text: str, use_perplexity=True):
     feats["punct_ratio"] = punctuation_ratio(text)
     feats["repetition"] = repetition_score([t for t in tokens if re.match(r"\w+", t)], n=3)
 
-    if use_perplexity and GPT2LMHeadModel is not None:
+    if use_perplexity and 'GPT2LMHeadModel' in globals() and GPT2LMHeadModel is not None:
         try:
             estimator = PerplexityEstimator(model_name="gpt2")
             ppx = estimator.perplexity(text)
@@ -230,5 +230,6 @@ if __name__ == "__main__":
     text = read_multiline_input()
     # Chiama la funzione di analisi con `text`
     analyze_text(text, use_perplexity=False)
+
 
 
